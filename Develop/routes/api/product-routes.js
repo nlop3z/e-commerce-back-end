@@ -3,7 +3,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
 
-// get all products
+// get all products - USE GET
 router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
   });
 });
     
-// get one product
+// get one product - USE GET
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
   })
 });
 
-// create new product
+// create new product - USE POST
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
@@ -84,7 +84,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// update product
+// update product - USE PUT(in isomnia a put but all other api testers it is POST)
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
@@ -128,7 +128,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+  // delete one product by its `id` value - USE DELETE
   ProductTag.destroy({
     where: {
       product_id: req.params.id
